@@ -136,7 +136,8 @@ public abstract class Comparer
 					byte[] digest = hasher.getDigest();
 					if (digest != null) {
 						String hash = hasher.getStringDigest();
-						// System.out.println("Calculated md5 sum for " + entry.getName() + " - '" + hash + "'");
+
+						 // System.out.println("Calculated md5 sum for " + entry.getName() + " - '" + hash + "'");
 						entry.setMd5Sum(inIndex, hash);
 					}
 				}

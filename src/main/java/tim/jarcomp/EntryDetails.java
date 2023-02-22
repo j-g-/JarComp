@@ -106,10 +106,17 @@ public class EntryDetails
 		if (!_present[0] && _present[1]) {return EntryStatus.ADDED;}
 		if (_present[0] && !_present[1]) {return EntryStatus.REMOVED;}
 		if (_sizes[0] != _sizes[1]) {return EntryStatus.CHANGED_SIZE;}
-		if (!getMd5Checked()) {return EntryStatus.SAME_SIZE;}
-		// md5 sums have been checked
-		if (!_md5Sums[0].equals(_md5Sums[1])) {return EntryStatus.CHANGED_SUM;}
+		if (_sizes[0] == _sizes[1]) {return EntryStatus.SAME_SIZE;}
 		return EntryStatus.EQUAL;
+	}
+	String getMd5Status(){
+		String status = "";
+		if (getMd5Checked()) {
+			status = _md5Sums[0].equals(_md5Sums[1]) ? "SAME_MD5_SUM": "CHANGED_MD5_SUM";
+		} else {
+			status = "MD5_NOT_CHECKED";
+		}
+		return status ;
 	}
 
 	/**

@@ -81,4 +81,15 @@ public class CompareResults extends EntryDetails
 		}
 		return true;
 	}
+
+	public String toString()
+	{
+		StringBuilder output = new StringBuilder();
+		for (EntryDetails ed : _entries ) {
+			String lineFormat  = "%-16s %-16s %-16s %s" + System.lineSeparator();
+			String sc = ed.getSizeChange().toString().isEmpty() ?  "0" : ed.getSizeChange().toString();
+			output.append(String.format( lineFormat, ed.getStatus(), ed.getMd5Status(),  sc ,  ed.getName()));
+		}
+		return output.toString();
+	}
 }
